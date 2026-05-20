@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Orbitra</title>
+<meta name="description" content="Answers about installments, scope, the Care Plan, refunds, and what happens after your launch with Orbitra.">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .faq-hero { padding: clamp(96px, 14vw, 160px) 0 clamp(40px, 6vw, 64px); position: relative; overflow: hidden; }
+  .faq-hero::before { content:''; position:absolute; inset:auto -10% -40% auto; width:520px; height:520px; border-radius:50%; background: radial-gradient(circle at 30% 30%, rgba(47,124,171,0.10), transparent 60%), radial-gradient(circle at 70% 70%, rgba(196,99,74,0.08), transparent 65%); filter: blur(20px); pointer-events:none; z-index:0; }
+  .faq-hero .container { position: relative; z-index: 1; }
+  .faq-toc { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .faq-toc a { font-family: var(--font-sans); font-size: 13px; padding: 8px 14px; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text); background: var(--color-surface); transition: all var(--duration-base) var(--ease-out-expo); }
+  .faq-toc a:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-1px); }
+  .faq-group { display: grid; grid-template-columns: 280px 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  @media (max-width: 820px) { .faq-group { grid-template-columns: 1fr; gap: 24px; } }
+  .faq-group-heading { position: sticky; top: 100px; }
+  @media (max-width: 820px) { .faq-group-heading { position: static; } }
+  .faq-group-heading .eyebrow { margin-bottom: 8px; }
+  .faq-group-heading h2 { margin-bottom: 12px; }
+  .faq-group-heading p { color: var(--color-muted); font-size: 15px; max-width: 28ch; }
+  details.faq-item { cursor: pointer; }
+  details.faq-item summary { list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 0; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item .faq-q { flex: 1; transition: color var(--duration-base) var(--ease-out-expo); }
+  details.faq-item:hover .faq-q { color: var(--color-primary); }
+  .faq-toggle { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--color-border); display:inline-flex; align-items:center; justify-content:center; transition: all var(--duration-base) var(--ease-out-expo); margin-top: 4px; }
+  details[open] .faq-toggle { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-paper); transform: rotate(45deg); }
+  .faq-toggle svg { width: 12px; height: 12px; }
+  .faq-a { padding-top: 14px; animation: faqIn 360ms var(--ease-out-expo); }
+  @keyframes faqIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="brand" aria-label="Orbitra home">
+        <img src="https://orbitravtwo.vercel.app/logo_test.svg" alt="Orbitra logo" class="brand-logo" height="40">
+        <span class="brand-text">
+          <span class="brand-name">Orbitra</span>
+          <span class="brand-tagline">Launch packages for Mauritian businesses</span>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h16M3 11h16M3 16h16"/></svg>
+      </button>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/packages.html">Packages</a>
+        <a href="/about.html">About</a>
+        <a href="/faq.html" aria-current="page">FAQ</a>
+        <a href="https://tally.so/r/gDJ7Zl" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Start your launch audit</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="faq-hero">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">Frequently asked</span>
+        <h1>Practical answers, <em>before you commit</em>.</h1>
+        <p class="lead mt-sm">Everything you might wonder about — payments, what's included, the Care Plan, refunds, and what happens after we hand over your launch.</p>
+        <div class="faq-toc" role="navigation" aria-label="FAQ sections">
+          <a href="#payments">Payments &amp; installments</a>
+          <a href="#scope">Scope &amp; deliverables</a>
+          <a href="#after-launch">After launch &amp; Care Plan</a>
+          <a href="#misc">Everything else</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper-divider"></div>
+
+  <section class="section" id="payments">
+    <div class="container">
+      <div class="faq-group reveal">
+        <div class="faq-group-heading">
+          <span class="eyebrow">Section one</span>
+          <h2 class="section-title">Payments &amp; installments</h2>
+          <p>Fixed packages, fixed prices, paid in defined installments matched to delivery milestones.</p>
+        </div>
+        <div class="reveal-stagger">
+          <details class="faq-item" open>
+            <summary><h3 class="faq-q">How do installments actually work?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Every package has a deposit (around 40%) that starts the work, and the balance is split across one or two installments tied to delivery milestones. For example, Full Launch is Rs 26,000 to begin, then two installments of Rs 19,500 across the build. Nothing hidden, nothing added later.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Is the deposit refundable?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">The deposit reserves your delivery slot and covers discovery, planning, and the first build phase. It is not refundable once work has started. If you change your mind before the scope is signed, the deposit is fully refunded.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">What happens if I miss an installment?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">We pause work, talk to you, and find a solution. Most often we adjust the schedule by a few weeks. We don't add late fees or penalties. If a package can no longer be completed, we hand over everything produced to that point.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">How do I pay?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Bank transfer in Mauritian Rupees. You receive a clear invoice for each installment, with the milestone and deliverables noted. No surprises.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Are prices negotiable?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">No. Prices are published so every client pays the same for the same package. This is what keeps Orbitra fair and predictable — and how we keep packages tight, fast, and honest.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper-divider"></div>
+
+  <section class="section" id="scope">
+    <div class="container">
+      <div class="faq-group reveal">
+        <div class="faq-group-heading">
+          <span class="eyebrow">Section two</span>
+          <h2 class="section-title">Scope &amp; deliverables</h2>
+          <p>Defined packages, defined outputs. Here's what is — and isn't — included.</p>
+        </div>
+        <div class="reveal-stagger">
+          <details class="faq-item" open>
+            <summary><h3 class="faq-q">Why packages instead of a custom quote?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Custom quotes drag on, balloon in price, and rarely launch on time. Packages are faster to scope, faster to build, and cheaper to deliver — and you know exactly what you're getting before you commit.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">What if I need something not in a package?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">If it's a small addition, we have published add-ons (extra pages, booking system, ecommerce module, etc.) with fixed prices. If it's beyond that, we'll be honest and tell you Orbitra isn't the right fit.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">How many revisions do I get?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Each milestone has a defined review round. For branding, two rounds of refinement on the chosen direction. For website pages, one round of content revision and one round of visual refinement. This keeps timelines predictable.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Do you write the content for my website?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">We structure your content with you during onboarding — questions, prompts, and a clear template. You provide the raw material; we shape it into pages that read well. For ecommerce, the Full and Premium packages include description support.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Who owns the website and brand assets?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">You do. After final payment, all source files, logo files, and access credentials are handed to you. The site lives on your hosting account, under your domain, in your name.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper-divider"></div>
+
+  <section class="section" id="after-launch" style="background: var(--color-surface);">
+    <div class="container">
+      <div class="faq-group reveal">
+        <div class="faq-group-heading">
+          <span class="eyebrow">Section three</span>
+          <h2 class="section-title">After launch &amp; Care Plan</h2>
+          <p>What happens once the site is live, and how the Care Plan keeps things running.</p>
+        </div>
+        <div class="reveal-stagger">
+          <details class="faq-item" open>
+            <summary><h3 class="faq-q">What does the Care Plan include?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Rs 3,500/month covers hosting, domain renewal, email, weekly backups, security monitoring, and platform updates — plus up to two minor content updates per month. Additional updates are Rs 1,500 each.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Is the Care Plan required?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">No. It's optional and you can opt out at any time. We strongly recommend it because a website left unmaintained will break, get hacked, or lose data. If you decline, we hand over everything and you take it from there.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">How long is the Care Plan commitment?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Three months minimum, then month-to-month with 30 days notice to cancel. No long contracts.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">What kind of support comes after launch?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Every package includes a handover call and a written manual for how to use your site. WhatsApp support runs for 30 days (Starter, Essential), 60 days (Full), or 90 days (Premium) after handover for any questions.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Can I add new pages or features later?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Yes — through published add-ons. Three extra pages: Rs 8,000. Booking system: Rs 10,000. Ecommerce module: Rs 25,000. Full site refresh after 12 months: Rs 30,000. Same transparent pricing as the launch packages.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper-divider"></div>
+
+  <section class="section" id="misc">
+    <div class="container">
+      <div class="faq-group reveal">
+        <div class="faq-group-heading">
+          <span class="eyebrow">Section four</span>
+          <h2 class="section-title">Everything else</h2>
+          <p>Refunds, timelines, working together, and questions we hear often.</p>
+        </div>
+        <div class="reveal-stagger">
+          <details class="faq-item" open>
+            <summary><h3 class="faq-q">What's the refund policy?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Before scope is signed, full deposit refund. After work begins, no refunds — you receive everything produced up to that point. We've never had to make this decision in difficult circumstances, but the policy is clear from day one.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">How long does a launch take?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Starter Launch: 30 days. Essential: 45 days. Full: 60 days. Premium: 75 days. Ecommerce ranges from 35 to 90 days depending on the tier. Timelines start the day the scope is signed and deposit received.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">What if I don't know which package I need?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">That's exactly what the launch audit is for. Five minutes, structured questions, and within 48 hours you receive a recommendation document with the package that fits, the timeline, and the cost. No obligation.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Do you work with businesses outside Mauritius?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Orbitra is built for the Mauritian context — local hosting, local payment gateways, local delivery considerations. We focus here so the work fits where you are. We don't take international clients at this time.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">How do we communicate during the build?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Email for documents and decisions. WhatsApp for quick questions. Scheduled calls at each milestone. You always know what stage we're at and what comes next.</p>
+          </details>
+          <details class="faq-item">
+            <summary><h3 class="faq-q">Still have a question?</h3><span class="faq-toggle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 1v10M1 6h10"/></svg></span></summary>
+            <p class="faq-a">Email <a href="mailto:contactus@orbitra.mu">contactus@orbitra.mu</a> or WhatsApp <a href="https://wa.me/23058150532">+230 58150532</a>. Or just start the audit — most questions get answered in the recommendation document.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="full-cta reveal">
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Get a recommendation, <em>not a sales pitch</em>.</h2>
+        <p>Five minutes of questions, 48 hours later a clear scope document with the package, timeline, and cost that fit where you are right now.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <a href="https://tally.so/r/gDJ7Zl" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Start your launch audit</a>
+          <a href="/packages.html" class="btn btn-secondary">See all packages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="/" class="brand" style="margin-bottom:16px;">
+          <img src="https://orbitravtwo.vercel.app/logo_test.svg" alt="Orbitra logo" class="brand-logo" height="40">
+          <span class="brand-text"><span class="brand-name">Orbitra</span></span>
+        </a>
+        <p style="max-width:32ch;">Launch packages for Mauritian businesses. Website, branding, and social — delivered with installments and a clear plan.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="/">Home</a>
+        <a href="/packages.html">Packages</a>
+        <a href="/about.html">About</a>
+        <a href="/faq.html">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get in touch</h5>
+        <a href="mailto:contactus@orbitra.mu">contactus@orbitra.mu</a>
+        <a href="https://wa.me/23058150532">WhatsApp +230 58150532</a>
+      </div>
+      <div class="footer-col">
+        <h5>Start</h5>
+        <a href="https://tally.so/r/gDJ7Zl" target="_blank" rel="noopener noreferrer">Start your launch audit →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Orbitra · Mauritius · <span data-year></span></span>
+      <span>Built with care in Port Louis.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/main.js" defer></script>
+</body>
+</html>
