@@ -1,15 +1,45 @@
 (function(){
   'use strict';
+  document.addEventListener('DOMContentLoaded', function(){
 
-  function ready(fn){
-    if (document.readyState !== 'loading') fn();
-    else document.addEventListener('DOMContentLoaded', fn);
-  }
+    // Header scrolled state
+    var header = document.querySelector('.site-header');
+    function onScroll(){
+      if (!header) return;
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-  ready(function(){
-    // Reveal on scroll
-    var revealEls = document.querySelectorAll('.reveal, .stagger, .section-heading');
-    if ('IntersectionObserver' in window) {
+    // Mobile menu
+    var toggle = document.querySelector('.mobile-toggle');
+    var menu = document.querySelector('.mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(){
+        menu.classList.toggle('open');
+      });
+      menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ menu.classList.remove('open'); });
+      });
+    }
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var href = link.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+
+    // Intersection-based reveal
+    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+    if ('IntersectionObserver' in window && revealEls.length) {
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if (entry.isIntersecting) {
@@ -23,41 +53,20 @@
       revealEls.forEach(function(el){ el.classList.add('in-view'); });
     }
 
-    // Sticky header background on scroll
-    var header = document.querySelector('.site-header');
-    if (header) {
-      var onScroll = function(){
-        if (window.scrollY > 32) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+    // Subtle cursor glow on hero (desktop only)
+    var hero = document.querySelector('.hero');
+    if (hero && window.matchMedia('(min-width: 880px)').matches) {
+      var glow = document.createElement('div');
+      glow.style.cssText = 'position:absolute;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(47,124,171,0.10), transparent 60%);pointer-events:none;transform:translate(-50%,-50%);transition:opacity 400ms ease;opacity:0;z-index:0;';
+      hero.appendChild(glow);
+      hero.addEventListener('mousemove', function(e){
+        var rect = hero.getBoundingClientRect();
+        glow.style.left = (e.clientX - rect.left) + 'px';
+        glow.style.top = (e.clientY - rect.top) + 'px';
+        glow.style.opacity = '1';
+      });
+      hero.addEventListener('mouseleave', function(){ glow.style.opacity = '0'; });
     }
 
-    // Mobile nav toggle
-    var toggle = document.querySelector('.nav-toggle');
-    var nav = document.querySelector('.nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', function(){
-        var isOpen = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-      nav.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){ nav.classList.remove('open'); });
-      });
-    }
-
-    // Smooth scroll for in-page anchors (native smooth-scroll handles, but enforce offset)
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var id = a.getAttribute('href');
-        if (id.length < 2) return;
-        var target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        var top = target.getBoundingClientRect().top + window.scrollY - 90;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      });
-    });
   });
 })();
