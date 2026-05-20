@@ -1,44 +1,34 @@
 (function(){
   'use strict';
-  document.addEventListener('DOMContentLoaded', function(){
 
-    // Header scrolled state
+  function onReady(fn){
+    if (document.readyState !== 'loading') fn();
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  onReady(function(){
+    // Header scroll state
     var header = document.querySelector('.site-header');
-    function onScroll(){
-      if (!header) return;
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+    if (header) {
+      var onScroll = function(){
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
 
-    // Mobile menu
-    var toggle = document.querySelector('.mobile-toggle');
-    var menu = document.querySelector('.mobile-menu');
-    if (toggle && menu) {
+    // Mobile menu toggle
+    var toggle = document.querySelector('.menu-toggle');
+    var nav = document.querySelector('.nav');
+    if (toggle && nav) {
       toggle.addEventListener('click', function(){
-        menu.classList.toggle('open');
-      });
-      menu.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){ menu.classList.remove('open'); });
+        nav.classList.toggle('mobile-open');
       });
     }
 
-    // Smooth anchor scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(function(link){
-      link.addEventListener('click', function(e){
-        var href = link.getAttribute('href');
-        if (!href || href === '#' || href.length < 2) return;
-        var target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        var top = target.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      });
-    });
-
-    // Intersection-based reveal
-    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+    // Reveal-on-scroll
+    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger, .section-label');
     if ('IntersectionObserver' in window && revealEls.length) {
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
@@ -47,26 +37,30 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
       revealEls.forEach(function(el){ io.observe(el); });
     } else {
       revealEls.forEach(function(el){ el.classList.add('in-view'); });
     }
 
-    // Subtle cursor glow on hero (desktop only)
-    var hero = document.querySelector('.hero');
-    if (hero && window.matchMedia('(min-width: 880px)').matches) {
-      var glow = document.createElement('div');
-      glow.style.cssText = 'position:absolute;top:0;left:0;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(47,124,171,0.10), transparent 60%);pointer-events:none;transform:translate(-50%,-50%);transition:opacity 400ms ease;opacity:0;z-index:0;';
-      hero.appendChild(glow);
-      hero.addEventListener('mousemove', function(e){
-        var rect = hero.getBoundingClientRect();
-        glow.style.left = (e.clientX - rect.left) + 'px';
-        glow.style.top = (e.clientY - rect.top) + 'px';
-        glow.style.opacity = '1';
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var id = link.getAttribute('href');
+        if (id.length > 1) {
+          var target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            var top = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
       });
-      hero.addEventListener('mouseleave', function(){ glow.style.opacity = '0'; });
-    }
+    });
 
+    // Current year in footer
+    document.querySelectorAll('[data-year]').forEach(function(el){
+      el.textContent = new Date().getFullYear();
+    });
   });
 })();
